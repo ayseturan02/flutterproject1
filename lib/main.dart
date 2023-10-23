@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterproject1/constants/color.dart';
+import 'package:flutterproject1/todoitem.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 void main() {
@@ -13,6 +14,9 @@ class MyApp extends StatefulWidget{
   @override
   State<MyApp> createState() => _MyAppState();
 }
+
+List<String>todo=["Study Lessons","Run 5K","Go to party"];
+List<String>completed=["Game meetup","Take out tash"];
 
 class _MyAppState extends State<MyApp> {
   bool isChecked = false;
@@ -56,150 +60,14 @@ class _MyAppState extends State<MyApp> {
                  child: Padding(
                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                    child: SingleChildScrollView(  //Aşagı gitmey yarıyor ekran kaydırma expanded yazmayı unutma
-                     child: Column(
-                      children: [
-                        Card(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20),
-                          ),
-                           child: Padding(
-                             padding: const EdgeInsets.all(20),
-                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(
-                                  Icons.notes_outlined,
-                                  size: 50,
-                                ),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 21,
-                                ),
-                                ),
-                                Checkbox(value: isChecked, onChanged: (val) => {
-                                    setState((){
-                                      isChecked=val!;  // ! val değişkeni varsa işleme koy
-                                    })
-                                })
-                              ],
-                          ),
-                           ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(
-                                  Icons.notes_outlined,
-                                  size: 50,
-                                ),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 21,
-                                  ),
-                                ),
-                                Checkbox(value: isChecked, onChanged: (val) => {
-                                  setState((){
-                                    isChecked=val!;  // ! val değişkeni varsa işleme koy
-                                  })
-                                })
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(
-                                  Icons.notes_outlined,
-                                  size: 50,
-                                ),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 21,
-                                  ),
-                                ),
-                                Checkbox(value: isChecked, onChanged: (val) => {
-                                  setState((){
-                                    isChecked=val!;  // ! val değişkeni varsa işleme koy
-                                  })
-                                })
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(
-                                  Icons.notes_outlined,
-                                  size: 50,
-                                ),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 21,
-                                  ),
-                                ),
-                                Checkbox(value: isChecked, onChanged: (val) => {
-                                  setState((){
-                                    isChecked=val!;  // ! val değişkeni varsa işleme koy
-                                  })
-                                })
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(
-                                  Icons.notes_outlined,
-                                  size: 50,
-                                ),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 21,
-                                  ),
-                                ),
-                                Checkbox(value: isChecked, onChanged: (val) => {
-                                  setState((){
-                                    isChecked=val!;  // ! val değişkeni varsa işleme koy
-                                  })
-                                })
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                     ),
+                     child: ListView.builder(
+                       primary: false,
+                       shrinkWrap: true,  //listview builderin kendine tahsis edilen alanda sınırlı kalmasını sağlar.
+                       itemCount: todo.length,
+                       itemBuilder: (context,index){
+                       return  TodoItem(title: todo[index],);
+                   },
+                   ),
                    ),
                  ),
                ),
@@ -221,149 +89,13 @@ class _MyAppState extends State<MyApp> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                 child: SingleChildScrollView(  //Aşagı gitmeye yarıyor ekran kaydırma expanded yazmayı unutma
-                  child: Column(
-                    children: [
-                      Card(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              const Icon(
-                                Icons.notes_outlined,
-                                size: 50,
-                              ),
-                              const Text(
-                                "Study Lessons",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 21,
-                                ),
-                              ),
-                              Checkbox(value: isChecked, onChanged: (val) => {
-                                setState((){
-                                  isChecked=val!;  // ! val değişkeni varsa işleme koy
-                                })
-                              })
-                            ],
-                          ),
-                        ),
-                      ),
-                      Card(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              const Icon(
-                                Icons.notes_outlined,
-                                size: 50,
-                              ),
-                              const Text(
-                                "Study Lessons",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 21,
-                                ),
-                              ),
-                              Checkbox(value: isChecked, onChanged: (val) => {
-                                setState((){
-                                  isChecked=val!;  // ! val değişkeni varsa işleme koy
-                                })
-                              })
-                            ],
-                          ),
-                        ),
-                      ),
-                      Card(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              const Icon(
-                                Icons.notes_outlined,
-                                size: 50,
-                              ),
-                              const Text(
-                                "Study Lessons",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 21,
-                                ),
-                              ),
-                              Checkbox(value: isChecked, onChanged: (val) => {
-                                setState((){
-                                  isChecked=val!;  // ! val değişkeni varsa işleme koy
-                                })
-                              })
-                            ],
-                          ),
-                        ),
-                      ),
-                      Card(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              const Icon(
-                                Icons.notes_outlined,
-                                size: 50,
-                              ),
-                              const Text(
-                                "Study Lessons",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 21,
-                                ),
-                              ),
-                              Checkbox(value: isChecked, onChanged: (val) => {
-                                setState((){
-                                  isChecked=val!;  // ! val değişkeni varsa işleme koy
-                                })
-                              })
-                            ],
-                          ),
-                        ),
-                      ),
-                      Card(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              const Icon(
-                                Icons.notes_outlined,
-                                size: 50,
-                              ),
-                              const Text(
-                                "Study Lessons",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 21,
-                                ),
-                              ),
-                              Checkbox(value: isChecked, onChanged: (val) => {
-                                setState((){
-                                  isChecked=val!;  // ! val değişkeni varsa işleme koy
-                                })
-                              })
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
+                  child: ListView.builder(
+                    primary: false,
+                    shrinkWrap: true,
+                    itemCount: completed.length,
+                    itemBuilder: (context,index){
+                      return TodoItem(title: completed[index]);
+                  },
                   ),
                 ),
               ),
