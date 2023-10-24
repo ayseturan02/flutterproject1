@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterproject1/constants/tasktype.dart';
+import 'package:flutterproject1/model/task.dart';
 import 'package:flutterproject1/screens/add_new_task.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -13,8 +15,19 @@ class HomeScree extends StatefulWidget{
 }
 
 class _HomeScreeState extends State<HomeScree> {
-  List<String>todo=["Study Lessons","Run 5K","Go to party"];
-  List<String>completed=["Game meetup","Take out tash"];
+
+ // List<String>todo=["Study Lessons","Run 5K","Go to party"];
+ // List<String>completed=["Game meetup","Take out tash"];
+
+  List<Task>todo=[
+    Task(type: TaskType.note, title: "Study Lessons", description: "Study COM117", isCompleted: false),
+    Task(type: TaskType.note, title: "Run 5K", description: "Attend to party", isCompleted: false),
+    Task(type: TaskType.note, title: "Go to party", description: "Run 5 kilometers", isCompleted: false)
+  ];
+  List<Task>completed=[
+    Task(type: TaskType.note, title: "Game meetup", description: "Study COM117", isCompleted: false),
+    Task(type: TaskType.note, title: "Take out tash", description: "Attend to party", isCompleted: false),
+  ];
   @override
   Widget build(BuildContext context){
     double deviceHeight=MediaQuery.of(context).size.height;
@@ -59,7 +72,7 @@ class _HomeScreeState extends State<HomeScree> {
                       shrinkWrap: true,  //listview builderin kendine tahsis edilen alanda sınırlı kalmasını sağlar.
                       itemCount: todo.length,
                       itemBuilder: (context,index){
-                        return  TodoItem(title: todo[index],);
+                        return  TodoItem(task: todo[index],);
                       },
                     ),
                   ),
@@ -88,7 +101,7 @@ class _HomeScreeState extends State<HomeScree> {
                       shrinkWrap: true,
                       itemCount: completed.length,
                       itemBuilder: (context,index){
-                        return TodoItem(title: completed[index]);
+                        return TodoItem(task: completed[index]);
                       },
                     ),
                   ),

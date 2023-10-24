@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'model/task.dart';
+
 class TodoItem extends StatefulWidget{
-  const TodoItem({super.key,required this.title});
-  final String title;  //
+  const TodoItem({super.key,required this.task});
+  final Task task;
   @override
   State<TodoItem> createState() => _TodoItemState();
 }
@@ -20,17 +22,24 @@ class _TodoItemState extends State<TodoItem> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+
             const Icon(
               Icons.notes_outlined,
               size: 50,
             ),
-            Text(
-              widget.title,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 21,
-              ),
+            Column(
+              children: [
+                Text(
+                  widget.task.title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 21,
+                  ),
+                ),
+                Text(widget.task.description)
+              ],
             ),
+
             Checkbox(value: isChecked, onChanged: (val) => {
               setState((){
                 isChecked=val!;  // ! val değişkeni varsa işleme koy
