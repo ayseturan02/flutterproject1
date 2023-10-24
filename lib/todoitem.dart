@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterproject1/constants/tasktype.dart';
 
 import 'model/task.dart';
 
@@ -22,11 +23,11 @@ class _TodoItemState extends State<TodoItem> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+// if() {...} --> a==5 ? Doğru : Yanlış  --->ternary operation
+          widget.task.type == TaskType.note
+              ? Image.asset("lib/assets/images/Category.png")
+              : Image.asset("lib/assets/images/Category1.png"),
 
-            const Icon(
-              Icons.notes_outlined,
-              size: 50,
-            ),
             Column(
               children: [
                 Text(
