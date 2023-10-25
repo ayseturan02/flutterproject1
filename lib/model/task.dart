@@ -11,6 +11,6 @@ class Task{
   final TaskType type;
   final String title;
   final String description;
-  final bool isCompleted;
+  late final bool isCompleted;
 
 }
