@@ -21,12 +21,12 @@ class _HomeScreeState extends State<HomeScree> {
 
   List<Task>todo=[
     Task(type: TaskType.note, title: "Study Lessons", description: "Study COM117", isCompleted: false),
-    Task(type: TaskType.note, title: "Run 5K", description: "Attend to party", isCompleted: false),
-    Task(type: TaskType.note, title: "Go to party", description: "Run 5 kilometers", isCompleted: false)
+    Task(type: TaskType.calender, title: "Run 5K", description: "Attend to party", isCompleted: false),
+    Task(type: TaskType.contest, title: "Go to party", description: "Run 5 kilometers", isCompleted: false)
   ];
   List<Task>completed=[
-    Task(type: TaskType.note, title: "Game meetup", description: "Study COM117", isCompleted: false),
-    Task(type: TaskType.note, title: "Take out tash", description: "Attend to party", isCompleted: false),
+    Task(type: TaskType.calender, title: "Game meetup", description: "Study COM117", isCompleted: false),
+    Task(type: TaskType.contest, title: "Take out tash", description: "Attend to party", isCompleted: false),
   ];
   @override
   Widget build(BuildContext context){

@@ -26,34 +26,41 @@ class _TodoItemState extends State<TodoItem> {
           children: [
 // if() {...} --> a==5 ? Doğru : Yanlış  --->ternary operation
           widget.task.type == TaskType.note
-              ? Image.asset("lib/assets/images/Category.png")
+          ? Image.asset("lib/assets/images/Category.png")
+          : widget.task.type == TaskType.contest
+              ? Image.asset("lib/assets/images/Category2.png")
               : Image.asset("lib/assets/images/Category1.png"),
-
-            Column(
-              children: [
-                Text(
-                  widget.task.title,
-                  style: TextStyle(
-                    decoration: widget.task.isCompleted
-                        ? TextDecoration.lineThrough
-                        : TextDecoration.none,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 21,
+            Expanded(
+              child: Column(
+                children: [
+                  Text(
+                    widget.task.title,
+                    style: TextStyle(
+                      decoration: widget.task.isCompleted
+                          ? TextDecoration.lineThrough
+                          : TextDecoration.none,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 21,
+                    ),
                   ),
-                ),
-                Text(
-                  widget.task.description,
-                  style: TextStyle(decoration: widget.task.isCompleted ? TextDecoration.lineThrough : TextDecoration.none),
-                )
-              ],
+                  Text(
+                    widget.task.description,
+                    style: TextStyle(decoration: widget.task.isCompleted ? TextDecoration.lineThrough : TextDecoration.none),
+                  )
+                ],
+              ),
             ),
 
-            Checkbox(value: isChecked, onChanged: (val) => {
-              setState((){
+            Checkbox(
+                value: isChecked,
+                onChanged: (val) => {
+                  setState((){
                 widget.task.isCompleted = !widget.task.isCompleted;
                 isChecked=val!;  // ! val değişkeni varsa işleme koy
-              })
-            })
+                },
+               )
+              },
+            )
           ],
         ),
       ),
